@@ -1,0 +1,9 @@
+{
+  "name": "react-cui",
+  "version": "1.0.0",
+  "description": "React wrapper for CUI",
+  "main": "index.js",
+  "repository": "https://github.com/jepser/react-cui.git",
+  "author": "Jepser Bernardino <jepsersk8@gmail.com>",
+  "license": "MIT"
+}
