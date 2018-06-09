@@ -6,14 +6,20 @@ export const EMBED_URL =
 
 class Cui extends Component {
   componentDidMount () {
-    if (document) {
-      if (!scriptTagExists({ document })) {
-        const embedJs = document.createElement('script')
-        embedJs.type = 'text/javascript'
-        embedJs.src = EMBED_URL
-        embedJs.async = true
-        document.getElementsByTagName('head')[0].appendChild(embedJs)
-      }
+    if (!scriptTagExists({ document })) {
+      const embedJs = document.createElement('script')
+      embedJs.type = 'text/javascript'
+      embedJs.id = 'cui-embed-script'
+      embedJs.src = EMBED_URL
+      embedJs.async = true
+      document.getElementsByTagName('head')[0].appendChild(embedJs)
+    }
+  }
+
+  componentWillUnmount () {
+    if (scriptTagExists({ document })) {
+      const scripts = getScriptTags({ document })
+      scripts.forEach(script => script.remove())
     }
   }
 
@@ -45,10 +51,16 @@ Cui.propTypes = {
 
 export default Cui
 
-const scriptTagExists = ({ document }) => {
+const getScriptTags = ({ document }) => {
   const scriptTags = document.getElementsByTagName('head')[0].childNodes
   const cuiEmbedScriptTags = [].filter.call(scriptTags, script => {
     return script.src === EMBED_URL
   })
-  return !!cuiEmbedScriptTags.length
+  return cuiEmbedScriptTags
+}
+
+const scriptTagExists = ({ document }) => {
+  const scriptTags = getScriptTags({ document })
+
+  return !!scriptTags.length
 }

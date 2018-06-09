@@ -4,6 +4,18 @@ import Adapter from 'enzyme-adapter-react-16'
 import Cui, { EMBED_URL } from './ReactCui'
 
 configure({ adapter: new Adapter() })
+
+const getEmbedScriptTag = ({ document }) => {
+  let embedScriptTags = []
+  const scriptTags = document.getElementsByTagName('head')[0].childNodes
+
+  scriptTags.forEach(script => {
+    if (script.src === EMBED_URL) embedScriptTags.push(scriptTags)
+  })
+
+  return embedScriptTags
+}
+
 describe('<Cui />', () => {
   test('Component have required UID parameter passed to render', () => {
     const uid = 'abc123'
@@ -35,12 +47,18 @@ describe('<Cui />', () => {
 
   test('Component should inject ONLY ONE script tag with the embed url', () => {
     const Component = mount(<Cui uid={'123'} />)
-    const scriptTags = document.getElementsByTagName('head')[0].childNodes
-    let embedScriptTags = 0
-    scriptTags.forEach(script => {
-      if (script.src === EMBED_URL) embedScriptTags++
-    })
 
-    expect(embedScriptTags).toBe(1)
+    const scriptTags = getEmbedScriptTag({ document })
+
+    expect(scriptTags.length).toBe(1)
+  })
+
+  test('Unmount the component will remove the script tag created', () => {
+    const Component = mount(<Cui uid={'123'} />)
+    Component.unmount()
+
+    const scriptTags = getEmbedScriptTag({ document })
+
+    expect(scriptTags.length).toBe(0)
   })
 })
