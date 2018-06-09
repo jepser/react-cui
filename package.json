@@ -33,6 +33,7 @@
     "commitmsg": "commitlint -E GIT_PARAMS",
     "format": "prettier-standard 'src/**/*.js'",
     "build": "parcel build src/index.js",
+    "dev": "parcel src/index.js",
     "demo": "parcel demo/index.html",
     "semantic-release": "semantic-release"
   },
