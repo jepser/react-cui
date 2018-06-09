@@ -1,11 +1,10 @@
 import React from 'react'
-import { shallow, mount, configure }  from 'enzyme'
+import { shallow, mount, configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import Cui, { EMBED_URL } from './ReactCui'
 
 configure({ adapter: new Adapter() })
 describe('<Cui />', () => {
-
   test('Component have required UID parameter passed to render', () => {
     const uid = 'abc123'
     const Component = mount(<Cui uid={uid} />)
@@ -17,7 +16,9 @@ describe('<Cui />', () => {
     const height = 500
     const avatar = 'https://avatar.com/profile.jpg'
     const theme = '#333'
-    const Component = mount(<Cui uid={uid} height={height} avatar={avatar} theme={theme} />)
+    const Component = mount(
+      <Cui uid={uid} height={height} avatar={avatar} theme={theme} />
+    )
     const ComponentDOM = Component.render()
 
     expect(ComponentDOM.attr('data-cui-height')).toBe(height.toString())
@@ -33,7 +34,6 @@ describe('<Cui />', () => {
   })
 
   test('Component should inject ONLY ONE script tag with the embed url', () => {
-
     const Component = mount(<Cui uid={'123'} />)
     const scriptTags = document.getElementsByTagName('head')[0].childNodes
     let embedScriptTags = 0
@@ -42,7 +42,5 @@ describe('<Cui />', () => {
     })
 
     expect(embedScriptTags).toBe(1)
-
   })
-
 })

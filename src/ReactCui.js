@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-export const EMBED_URL = 'https://typeform-labs.s3.amazonaws.com/cui/cui-embed.js'
+export const EMBED_URL =
+  'https://typeform-labs.s3.amazonaws.com/cui/cui-embed.js'
 
 class Cui extends Component {
-  componentDidMount() {
-    if (document && !scriptTagExists({document})) {
+  componentDidMount () {
+    if (document && !scriptTagExists({ document })) {
       const embedJs = document.createElement('script')
       embedJs.type = 'text/javascript'
       embedJs.src = EMBED_URL
@@ -14,13 +15,8 @@ class Cui extends Component {
     }
   }
 
-  render() {
-    const {
-      uid,
-      height,
-      avatar,
-      theme
-    } = this.props
+  render () {
+    const { uid, height, avatar, theme } = this.props
     return (
       <Fragment>
         {uid ? (
@@ -47,9 +43,9 @@ Cui.propTypes = {
 
 export default Cui
 
-const scriptTagExists = ({document}) => {
+const scriptTagExists = ({ document }) => {
   const scriptTags = document.getElementsByTagName('head')[0].childNodes
-  const cuiEmbedScriptTags = [].filter.call(scriptTags, (script) => {
+  const cuiEmbedScriptTags = [].filter.call(scriptTags, script => {
     return script.src === EMBED_URL
   })
   return !!cuiEmbedScriptTags.length
