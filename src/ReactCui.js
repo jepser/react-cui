@@ -7,7 +7,7 @@ export const EMBED_URL =
 class Cui extends Component {
   componentDidMount () {
     if (document) {
-      if (scriptTagExists({ document })) {
+      if (!scriptTagExists({ document })) {
         const embedJs = document.createElement('script')
         embedJs.type = 'text/javascript'
         embedJs.src = EMBED_URL
