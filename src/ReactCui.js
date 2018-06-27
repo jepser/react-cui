@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-export const EMBED_URL =
-  'https://typeform-labs.s3.amazonaws.com/cui/cui-embed.js'
+export const EMBED_URL = 'https://labs-assets.typeform.com/cui/cui-embed.js'
 
 class Cui extends Component {
   componentDidMount () {
