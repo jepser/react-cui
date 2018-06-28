@@ -1,9 +1,13 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment, createRef } from 'react'
 import PropTypes from 'prop-types'
 
 export const EMBED_URL = 'https://labs-assets.typeform.com/cui/cui-embed.js'
 
 class Cui extends Component {
+  constructor () {
+    super()
+    this.ref = createRef()
+  }
   componentDidMount () {
     if (!scriptTagExists({ document })) {
       const embedJs = document.createElement('script')
@@ -11,14 +15,9 @@ class Cui extends Component {
       embedJs.id = 'cui-embed-script'
       embedJs.src = EMBED_URL
       embedJs.async = true
-      document.getElementsByTagName('head')[0].appendChild(embedJs)
-    }
-  }
-
-  componentWillUnmount () {
-    if (scriptTagExists({ document })) {
-      const scripts = getScriptTags({ document })
-      scripts.forEach(script => script.remove())
+      document.head.appendChild(embedJs)
+    } else {
+      window.__CUI && window.__CUI.register(this.ref.current)
     }
   }
 
@@ -34,6 +33,7 @@ class Cui extends Component {
             data-cui-height={height}
             data-cui-avatar={avatar}
             data-cui-theme={theme}
+            ref={this.ref}
           />
         ) : null}
       </Fragment>

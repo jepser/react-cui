@@ -52,13 +52,4 @@ describe('<Cui />', () => {
 
     expect(scriptTags.length).toBe(1)
   })
-
-  test('Unmount the component will remove the script tag created', () => {
-    const Component = mount(<Cui uid={'123'} />)
-    Component.unmount()
-
-    const scriptTags = getEmbedScriptTag({ document })
-
-    expect(scriptTags.length).toBe(0)
-  })
 })
