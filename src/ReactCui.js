@@ -17,7 +17,7 @@ class Cui extends Component {
       embedJs.async = true
       document.head.appendChild(embedJs)
     } else {
-      window.__CUI.register(this.ref.current)
+      window.__CUI && window.__CUI.register(this.ref.current)
     }
   }
 
