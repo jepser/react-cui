@@ -6,7 +6,10 @@
   "repository": "https://github.com/jepser/react-cui.git",
   "author": "Jepser Bernardino <jepsersk8@gmail.com>",
   "license": "MIT",
-  "peerDependencies": {},
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-conventional": "^7.0.1",
@@ -22,8 +25,8 @@
     "parcel-bundler": "^1.8.1",
     "prettier-standard": "^8.0.1",
     "prop-types": "^15.6.1",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "regenerator-runtime": "^0.11.1",
     "semantic-release": "^15.5.1"
   },
