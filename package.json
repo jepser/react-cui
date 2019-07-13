@@ -31,7 +31,7 @@
     "semantic-release": "^15.5.1"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest ./src",
     "precommit": "lint-staged",
     "commitmsg": "commitlint -E GIT_PARAMS",
     "format": "prettier-standard 'src/**/*.js'",
