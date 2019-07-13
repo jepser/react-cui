@@ -1,2 +1,1 @@
-export * from './ReactCui'
-export { default } from './ReactCui'
+export { default } from './react-cui'

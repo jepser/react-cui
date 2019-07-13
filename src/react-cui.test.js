@@ -1,7 +1,10 @@
 import React from 'react'
 import { shallow, mount, configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import Cui, { EMBED_URL } from './ReactCui'
+import Cui from './react-cui'
+import { EMBED_URL } from './constants'
+
+console.log(EMBED_URL)
 
 configure({ adapter: new Adapter() })
 

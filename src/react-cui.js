@@ -1,7 +1,8 @@
 import React, { Component, Fragment, createRef } from 'react'
 import PropTypes from 'prop-types'
 
-export const EMBED_URL = 'https://labs-assets.typeform.com/cui/cui-embed.js'
+import { scriptTagExists } from './utils'
+import { EMBED_URL } from './constants'
 
 class Cui extends Component {
   constructor () {
@@ -49,17 +50,3 @@ Cui.propTypes = {
 }
 
 export default Cui
-
-const getScriptTags = ({ document }) => {
-  const scriptTags = document.getElementsByTagName('head')[0].childNodes
-  const cuiEmbedScriptTags = [].filter.call(scriptTags, script => {
-    return script.src === EMBED_URL
-  })
-  return cuiEmbedScriptTags
-}
-
-const scriptTagExists = ({ document }) => {
-  const scriptTags = getScriptTags({ document })
-
-  return !!scriptTags.length
-}
