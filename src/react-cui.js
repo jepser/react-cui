@@ -23,7 +23,7 @@ class Cui extends Component {
   }
 
   render () {
-    const { uid, height, avatar, theme } = this.props
+    const { uid, height, avatar, theme, mode } = this.props
     return (
       <Fragment>
         {uid ? (
@@ -34,6 +34,7 @@ class Cui extends Component {
             data-cui-height={height}
             data-cui-avatar={avatar}
             data-cui-theme={theme}
+            data-cui-mode={mode}
             ref={this.ref}
           />
         ) : null}
@@ -46,7 +47,8 @@ Cui.propTypes = {
   uid: PropTypes.string.isRequired,
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   avatar: PropTypes.string,
-  theme: PropTypes.string
+  theme: PropTypes.string,
+  mode: PropTypes.string
 }
 
 export default Cui

@@ -31,14 +31,22 @@ describe('<Cui />', () => {
     const height = 500
     const avatar = 'https://avatar.com/profile.jpg'
     const theme = '#333'
+    const mode = 'pill'
     const Component = mount(
-      <Cui uid={uid} height={height} avatar={avatar} theme={theme} />
+      <Cui
+        uid={uid}
+        height={height}
+        avatar={avatar}
+        theme={theme}
+        mode={mode}
+      />
     )
     const ComponentDOM = Component.render()
 
     expect(ComponentDOM.attr('data-cui-height')).toBe(height.toString())
     expect(ComponentDOM.attr('data-cui-avatar')).toBe(avatar)
     expect(ComponentDOM.attr('data-cui-theme')).toBe(theme)
+    expect(ComponentDOM.attr('data-cui-mode')).toBe(mode)
   })
 
   test('Component should have the className `cui-embed` so the scripts loads the CUI inside', () => {
