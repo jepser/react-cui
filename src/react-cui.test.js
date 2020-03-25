@@ -32,6 +32,7 @@ describe('<Cui />', () => {
     const avatar = 'https://avatar.com/profile.jpg'
     const theme = '#333'
     const mode = 'pill'
+    const pillButtonColor = '#333'
     const Component = mount(
       <Cui
         uid={uid}
@@ -39,6 +40,7 @@ describe('<Cui />', () => {
         avatar={avatar}
         theme={theme}
         mode={mode}
+        pillButtonColor={pillButtonColor}
       />
     )
     const ComponentDOM = Component.render()
@@ -47,6 +49,9 @@ describe('<Cui />', () => {
     expect(ComponentDOM.attr('data-cui-avatar')).toBe(avatar)
     expect(ComponentDOM.attr('data-cui-theme')).toBe(theme)
     expect(ComponentDOM.attr('data-cui-mode')).toBe(mode)
+    expect(ComponentDOM.attr('data-cui-pill-button-color')).toBe(
+      pillButtonColor
+    )
   })
 
   test('Component should have the className `cui-embed` so the scripts loads the CUI inside', () => {

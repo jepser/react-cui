@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
 import Cui from "../src/react-cui";
 
@@ -19,28 +19,40 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <p>Let's add avatar and theme</p>
-        <Cui
-          uid="d6wXaD"
-          theme="blue"
-          avatar="https://i.imgur.com/6jr3M0j.png"
-          height="400"
-          mode="pill"
-        />
-        {this.state.show && (
+      <Fragment>
+        <section>
+          <div>
+            <p>Let's add avatar and theme</p>
+            <Cui
+              uid="d6wXaD"
+              theme="blue"
+              avatar="https://i.imgur.com/6jr3M0j.png"
+              height="400"
+            />
+            {this.state.show && (
+              <Cui
+                uid="Sb1WbK"
+                theme="red"
+                avatar="https://i.imgur.com/6jr3M0j.png"
+                height="400"
+              />
+            )}
+            <span onClick={this.handleOnClick}>
+              Click to {this.state.show ? "hide" : "show"}
+            </span>
+          </div>
+        </section>
+        <section>
           <Cui
-            uid="Sb1WbK"
-            theme="red"
+            uid="d6wXaD"
+            theme="blue"
             avatar="https://i.imgur.com/6jr3M0j.png"
             height="400"
             mode="pill"
+            pillButtonColor="blue"
           />
-        )}
-        <span onClick={this.handleOnClick}>
-          Click to {this.state.show ? "hide" : "show"}
-        </span>
-      </div>
+        </section>
+      </Fragment>
     );
   }
 }
